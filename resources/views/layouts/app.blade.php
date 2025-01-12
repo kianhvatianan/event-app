@@ -1,5 +1,3 @@
-<!-- resources/views/layouts/app.blade.php -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,12 +20,12 @@
             <div class="flex space-x-4">
                 @guest
                     <!-- Login dan Register jika belum login -->
-                    <a href="#" class="text-gray-800 hover:text-blue-500">Login</a>
-                    <a href="#" class="text-gray-800 hover:text-blue-500">Register</a>
+                    <a href="{{ route('member.login') }}" class="text-gray-800 hover:text-blue-500">Login</a>
+                    <a href="{{ route('member.register') }}" class="text-gray-800 hover:text-blue-500">Register</a>
                 @else
                     <!-- Profile jika sudah login -->
-                    <a href="#" class="text-gray-800 hover:text-blue-500">Profile</a>
-                    <form action="#" method="POST" class="inline-block">
+                    <a href="{{ route('member.dashboard') }}" class="text-gray-800 hover:text-blue-500">Dashboard</a>
+                    <form action="{{ route('member.logout') }}" method="POST" class="inline-block">
                         @csrf
                         <button type="submit" class="text-gray-800 hover:text-blue-500">Logout</button>
                     </form>
