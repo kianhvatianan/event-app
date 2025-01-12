@@ -16,3 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+use App\Http\Controllers\Admin\AdminController;
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('login', [AdminController::class, 'showLoginForm'])->name('login');
+    Route::post('login', [AdminController::class, 'login']);
+    Route::middleware('admin')->get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+});
