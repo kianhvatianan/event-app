@@ -19,4 +19,9 @@ class Event extends Model
         'capacity',
         'status',
     ];
+
+    // Casting 'date' into Carbon instance
+    protected $casts = [
+        'date' => 'datetime',
+    ];
 }

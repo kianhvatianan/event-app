@@ -16,7 +16,7 @@
             <div class="px-6 py-4 text-2xl font-semibold">Admin Panel</div>
             <ul class="space-y-4 flex-grow">
                 <li><a href="{{ route('admin.dashboard') }}" class="block px-6 py-2 text-lg hover:bg-gray-700">Dashboard</a></li>
-                <li><a href="#" class="block px-6 py-2 text-lg hover:bg-gray-700">Events</a></li>
+                <li><a href="{{ route('admin.events.index') }}" class="block px-6 py-2 text-lg hover:bg-gray-700">Events</a></li>
                 <li><a href="#" class="block px-6 py-2 text-lg hover:bg-gray-700">Members</a></li>
             </ul>
 
