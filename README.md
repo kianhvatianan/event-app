@@ -65,6 +65,8 @@ In today's digital era, online organizations frequently host virtual events on p
   - `id, user_id, event_id, registered_at`  
 
 
+ ---
+
 ### **Tech Stack:**  
 
 #### **Backend:**  
