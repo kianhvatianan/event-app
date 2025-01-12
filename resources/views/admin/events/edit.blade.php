@@ -7,6 +7,7 @@
     <form action="{{ route('admin.events.update', $event->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
+
         <div class="mb-4">
             <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
             <input type="text" name="title" id="title" class="mt-1 block w-full px-4 py-2 border rounded-md" value="{{ old('title', $event->title) }}">
@@ -36,6 +37,20 @@
             <label for="platform" class="block text-sm font-medium text-gray-700">Platform</label>
             <input type="text" name="platform" id="platform" class="mt-1 block w-full px-4 py-2 border rounded-md" value="{{ old('platform', $event->platform) }}">
             @error('platform') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+        </div>
+
+        <!-- Kolom kapasitas -->
+        <div class="mb-4">
+            <label for="capacity" class="block text-sm font-medium text-gray-700">Capacity</label>
+            <input type="number" name="capacity" id="capacity" class="mt-1 block w-full px-4 py-2 border rounded-md" value="{{ old('capacity', $event->capacity) }}">
+            @error('capacity') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+        </div>
+
+        <!-- Kolom link -->
+        <div class="mb-4">
+            <label for="link" class="block text-sm font-medium text-gray-700">Link</label>
+            <input type="url" name="link" id="link" class="mt-1 block w-full px-4 py-2 border rounded-md" value="{{ old('link', $event->link) }}">
+            @error('link') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
         </div>
 
         <div class="mb-4">

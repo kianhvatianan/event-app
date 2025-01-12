@@ -28,13 +28,6 @@
             <p>{{ ucfirst($event->status) }}</p>
         </div>
 
-        @if($event->link)
-            <div class="mb-6">
-                <strong>Event Link:</strong>
-                <p><a href="{{ $event->link }}" class="text-blue-500" target="_blank">Join Event</a></p>
-            </div>
-        @endif
-
         <!-- Tampilkan tombol untuk mendaftar jika member belum mendaftar -->
         @auth
             @if($event->users->contains(auth()->user()))

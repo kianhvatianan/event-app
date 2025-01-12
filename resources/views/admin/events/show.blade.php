@@ -14,7 +14,7 @@
     </div>
 
     <div class="mb-4">
-        <strong>Date:</strong>
+        <strong>Date and Time:</strong>
         <p>{{ $event->date->format('Y-m-d H:i') }}</p>
     </div>
 
@@ -26,6 +26,16 @@
     <div class="mb-4">
         <strong>Status:</strong>
         <p>{{ ucfirst($event->status) }}</p>
+    </div>
+
+    <div class="mb-4">
+        <strong>Capacity:</strong>
+        <p>{{ $event->capacity ?? 'No capacity limit' }}</p>
+    </div>
+
+    <div class="mb-4">
+        <strong>Link:</strong>
+        <p><a href="{{ $event->link }}" target="_blank" class="text-blue-500">{{ $event->link }}</a></p>
     </div>
 </div>
 @endsection

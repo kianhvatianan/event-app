@@ -38,6 +38,20 @@
             @error('platform') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
         </div>
 
+        <!-- Kolom kapasitas -->
+        <div class="mb-4">
+            <label for="capacity" class="block text-sm font-medium text-gray-700">Capacity</label>
+            <input type="number" name="capacity" id="capacity" class="mt-1 block w-full px-4 py-2 border rounded-md" value="{{ old('capacity') }}">
+            @error('capacity') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+        </div>
+
+        <!-- Kolom link -->
+        <div class="mb-4">
+            <label for="link" class="block text-sm font-medium text-gray-700">Link</label>
+            <input type="url" name="link" id="link" class="mt-1 block w-full px-4 py-2 border rounded-md" value="{{ old('link') }}">
+            @error('link') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+        </div>
+
         <div class="mb-4">
             <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
             <select name="status" id="status" class="mt-1 block w-full px-4 py-2 border rounded-md">
