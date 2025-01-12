@@ -35,6 +35,18 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::delete('event/{event}', [EventController::class, 'destroy'])->name('events.destroy');
 });
 
+use App\Http\Controllers\Member\MemberAuthController;
+use App\Http\Controllers\Member\MemberEventController;
+
+Route::prefix('member')->name('member.')->group(function () {
+    Route::get('register', [MemberAuthController::class, 'showRegisterForm'])->name('register');
+    Route::post('register', [MemberAuthController::class, 'register']);
+    Route::get('login', [MemberAuthController::class, 'showLoginForm'])->name('login');
+    Route::post('login', [MemberAuthController::class, 'login']);
+    Route::post('logout', [MemberAuthController::class, 'logout'])->name('logout');
+    Route::middleware('member')->get('dashboard', [MemberEventController::class, 'dashboard'])->name('dashboard');
+
+});
 
 
 use App\Http\Controllers\Public\PublicEventController;

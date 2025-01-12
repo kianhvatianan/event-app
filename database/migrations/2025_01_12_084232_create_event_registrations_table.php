@@ -12,6 +12,7 @@ return new class extends Migration {
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('event_id')->constrained()->onDelete('cascade');
             $table->timestamp('registered_at')->useCurrent();
+            $table->timestamps();
         });
     }
 
@@ -20,3 +21,4 @@ return new class extends Migration {
         Schema::dropIfExists('event_registrations');
     }
 };
+

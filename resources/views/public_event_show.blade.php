@@ -1,5 +1,3 @@
-<!-- resources/views/public/events/show.blade.php -->
-
 @extends('layouts.app')
 
 @section('content')
@@ -36,6 +34,24 @@
                 <p><a href="{{ $event->link }}" class="text-blue-500" target="_blank">Join Event</a></p>
             </div>
         @endif
+
+        <!-- Tampilkan tombol untuk mendaftar jika member belum mendaftar -->
+        @auth
+            @if(! $event->registrants->contains(auth()->user()))
+                <form action="{{ route('public.events.register', $event->id) }}" method="POST" class="mt-4">
+                    @csrf
+                    <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded">
+                        Register This Event
+                    </button>
+                </form>
+            @else
+                <p class="mt-4 text-green-500">You are already registered for this event!</p>
+            @endif
+        @endauth
+
+        @guest
+            <p class="mt-4 text-red-500">Please <a href="{{ route('member.login') }}" class="text-blue-500">login</a> to register for this event.</p>
+        @endguest
 
         <a href="{{ route('public.events.index') }}" class="text-blue-500">Back to Events List</a>
     </div>

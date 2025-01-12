@@ -24,4 +24,12 @@ class Event extends Model
     protected $casts = [
         'date' => 'datetime',
     ];
+
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'event_registrations')
+                    ->withTimestamps();
+    }
+    
 }

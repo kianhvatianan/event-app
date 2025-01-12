@@ -11,7 +11,6 @@ class PublicEventController extends Controller
 {
     public function index()
     {
-        // Ambil semua event yang aktif dan belum berakhir
         $events = Event::where('status', 'active')
                        ->where('date', '>=', now())
                        ->get();
@@ -21,9 +20,31 @@ class PublicEventController extends Controller
 
     public function show($id)
     {
-        // Ambil event berdasarkan ID
         $event = Event::findOrFail($id);
 
         return view('public_event_show', compact('event'));
     }
+
+
+    public function registerForEvent(Event $event)
+    {
+        $user = auth()->user();
+        if (!$user) {
+            return redirect()->route('login')->with('error', 'Please login to register for an event.');
+        }
+    
+        if ($user->events()->where('event_id', $event->id)->exists()) {
+            return redirect()->route('public.events.index')->with('error', 'You are already registered for this event.');
+        }
+    
+        EventRegistration::create([
+            'user_id' => $user->id,
+            'event_id' => $event->id,
+            'registered_at' => now(),
+        ]);
+    
+        return redirect()->route('public.events.index')->with('success', 'You have successfully registered for the event.');
+    }
+    
+
 }
