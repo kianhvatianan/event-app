@@ -24,5 +24,6 @@ use App\Http\Controllers\Admin\AdminController;
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('login', [AdminController::class, 'showLoginForm'])->name('login');
     Route::post('login', [AdminController::class, 'login']);
+    Route::post('logout', [AdminController::class, 'logout'])->middleware('admin')->name('logout');
     Route::middleware('admin')->get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 });
