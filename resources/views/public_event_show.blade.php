@@ -37,15 +37,15 @@
 
         <!-- Tampilkan tombol untuk mendaftar jika member belum mendaftar -->
         @auth
-            @if(! $event->registrants->contains(auth()->user()))
+            @if($event->users->contains(auth()->user()))
+                <p class="mt-4 text-green-500">You are already registered for this event!</p>
+            @else
                 <form action="{{ route('public.events.register', $event->id) }}" method="POST" class="mt-4">
                     @csrf
                     <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded">
                         Register This Event
                     </button>
                 </form>
-            @else
-                <p class="mt-4 text-green-500">You are already registered for this event!</p>
             @endif
         @endauth
 

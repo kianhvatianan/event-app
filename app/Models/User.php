@@ -23,4 +23,9 @@ class User extends Authenticatable
         return $this->belongsToMany(Event::class, 'event_registrations')
                     ->withTimestamps();
     }
+
+    public function isMember()
+    {
+        return $this->role === 'member';
+    }
 }

@@ -53,3 +53,4 @@ use App\Http\Controllers\Public\PublicEventController;
 
 Route::get('/', [PublicEventController::class, 'index'])->name('public.events.index');
 Route::get('{id}', [PublicEventController::class, 'show'])->name('public.events.show');
+Route::post('events/{event}/register', [PublicEventController::class, 'registerForEvent'])->name('public.events.register');
