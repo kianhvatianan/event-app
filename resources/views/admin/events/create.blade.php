@@ -26,7 +26,9 @@
 
         <div class="mb-4">
             <label for="date" class="block text-sm font-medium text-gray-700">Date and Time</label>
-            <input type="datetime-local" name="date" id="date" class="mt-1 block w-full px-4 py-2 border rounded-md" value="{{ old('date') }}">
+            <input type="datetime-local" name="date" id="date" 
+                    class="mt-1 block w-full px-4 py-2 border rounded-md" 
+                    value="{{ old('date') ?? now()->format('Y-m-d\TH:i') }}">
             @error('date') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
         </div>
 
