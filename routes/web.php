@@ -13,9 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 
 
@@ -37,3 +34,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('event/{id}', [EventController::class, 'show'])->name('events.show');
     Route::delete('event/{event}', [EventController::class, 'destroy'])->name('events.destroy');
 });
+
+
+
+use App\Http\Controllers\Public\PublicEventController;
+
+Route::get('/', [PublicEventController::class, 'index'])->name('public.events.index');
+Route::get('{id}', [PublicEventController::class, 'show'])->name('public.events.show');
